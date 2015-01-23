@@ -22,7 +22,8 @@ button.attr("id", "deleteAll");
 
 
 function createToDo(input){
-  ul.append("<li>" + input + "<span class='delete'>Delete</span></li>");
+  var item = $("<li>" + input + "<span class='delete'>Delete</span></li>").fadeIn();
+  ul.append(item);
   updateCount();
 }
 
@@ -32,7 +33,9 @@ $('ul').on('click', 'li', function(e){
 })
 
 $('ul').on('click', 'li span', function(e){
-  $(this.parentElement).remove();
+  $(this.parentElement).fadeOut(400, function(){
+    $(this).remove();
+  });
   updateCount();
 })
 
